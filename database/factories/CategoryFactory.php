@@ -3,17 +3,17 @@
 namespace Database\Factories;
 
 use App\Models\Category;
-use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
-class ProductFactory extends Factory
+class CategoryFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Product::class;
+    protected $model = Category::class;
 
     /**
      * Define the model's default state.
@@ -23,10 +23,7 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            'status' => 1,
-            'description' => $this->faker->word(),
-            'value' => $this->faker->randomFloat(2, 10, 10000),
-            'category_id' => Category::inRandomOrder()->first(),
+            'name' => $this->faker->words(3, true),
         ];
     }
 }

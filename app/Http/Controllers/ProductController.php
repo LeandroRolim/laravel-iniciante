@@ -33,12 +33,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $product = new Product();
-        $product->value = $request->input('value');
-        $product->description = $request->input('description');
-        $product->status = $request->input('status');
-        $product->save();
-        return $product;
+        return Product::create($request->all());
     }
 
     /**
@@ -70,7 +65,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $product->value = $request->input('value');
+        $product->fill($request->all());
         $product->save();
         return $product;
     }
